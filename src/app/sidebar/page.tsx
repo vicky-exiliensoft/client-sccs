@@ -15,13 +15,13 @@ function Sidebar() {
           {/* {{-- SideBar Logo section Start --}} */}
           <div className="logo-part px-2 d-flex align-items-center sticky-top">
             <a href="/" className="m-auto">
-              <Image src={"../logo.svg"} alt="logo" width={150} height={150} className="img-fluid m-auto transition-x d-block" />
+              <Image src={"../logo.svg"} alt="logo" width={150} height={150} className="Image-fluid m-auto transition-x d-block" />
               <Image
                 src={"../logo-square.svg"}
                 alt="logo"
                 width={500}
                 height={500}
-                className="img-fluid img-fluid partial-logo transition-x w-0 d-block"
+                className="Image-fluid Image-fluid partial-logo transition-x w-0 d-block"
               />
             </a>
             {/* {{-- Mobile Sidebar Hamburg-button Start --}} */}
@@ -40,8 +40,8 @@ function Sidebar() {
             {/* <Nav.Item> */}
             {/* Sidebar link */}
             {/* <Nav.Link href="#home" className="text-white text-justify text-center" style={{ backgroundColor: "rgba(0,0,0,0)" }}> */}
-            {/* <Image src={"../logo.svg"} alt="logo" width={500} height={500} className="img-fluid m-auto transition-x d-block" /> */}
-            {/* <Image src={"../logo-square.svg"} alt="logo" width={500} height={500} className="img-fluid img-fluid partial-logo transition-x w-0 d-block" /> */}
+            {/* <Image src={"../logo.svg"} alt="logo" width={500} height={500} className="Image-fluid m-auto transition-x d-block" /> */}
+            {/* <Image src={"../logo-square.svg"} alt="logo" width={500} height={500} className="Image-fluid Image-fluid partial-logo transition-x w-0 d-block" /> */}
             {/* </Nav.Link> */}
             {/* </Nav.Item> */}
             <Nav.Item>
@@ -76,8 +76,8 @@ function Sidebar() {
           <ul className="sidebar-menus transition-x navbar-nav">
             {/* {{-- Dashboard Menu Start --}} */}
             <li className="sidebar-menus-list-item d-flex align-items-start transition-x nav-item {{ isLinkActive('*/dashboard') }}">
-              <span className="sidebar-menus-list-item-img">
-                <Image src="{{ Vite::asset('resources/images/dashboard.svg') }}" alt="Dashboard" className="img-fluid" />
+              <span className="sidebar-menus-list-item-Image">
+                <Image src="{{ Vite::asset('resources/images/dashboard.svg') }}" alt="Dashboard" className="Image-fluid" />
               </span>
               <div className="menu-with-icon transition-x">
                 <a
@@ -92,8 +92,8 @@ function Sidebar() {
             {/* {{-- Dashboard Menu End --}} */}
             {/* {{-- Booking Menu Start --}} */}
             <li className="sidebar-menus-list-item d-flex align-items-start  transition-x nav-item">
-              <span className="sidebar-menus-list-item-img">
-                <img src="{{ Vite::asset('resources/images/booking.svg') }}" alt="Agent" className="img-fluid" />
+              <span className="sidebar-menus-list-item-Image">
+                <Image src="{{ Vite::asset('resources/images/booking.svg') }}" alt="Agent" className="Image-fluid" />
               </span>
               <div className="menu-with-icon transition-x">
                 <a
@@ -143,8 +143,8 @@ function Sidebar() {
             {/* {{-- Booking Menu End --}} */}
             {/* {{-- Booking Start --}} */}
             <li className="sidebar-menus-list-item d-flex align-items-start transition-x nav-item {{ isLinkActive('*/booking') }}">
-              <span className="sidebar-menus-list-item-img">
-                <img src="{{ Vite::asset('resources/images/booking.svg') }}" alt="Agent" className="img-fluid" />
+              <span className="sidebar-menus-list-item-Image">
+                <Image src="{{ Vite::asset('resources/images/booking.svg') }}" alt="Agent" className="Image-fluid" />
               </span>
               <div className="menu-with-icon transition-x">
                 <a
@@ -162,8 +162,8 @@ function Sidebar() {
             {/* {{-- Booking End --}} */}
             {/* {{-- Customers Menu Start --}} */}
             <li className="sidebar-menus-list-item d-flex align-items-start transition-x nav-item {{ isLinkActive('*/customers') }}">
-              <span className="sidebar-menus-list-item-img">
-                <img src="{{ Vite::asset('resources/images/customers.svg') }}" alt="Customer" className="img-fluid" />
+              <span className="sidebar-menus-list-item-Image">
+                <Image src="{{ Vite::asset('resources/images/customers.svg') }}" alt="Customer" className="Image-fluid" />
               </span>
               <div className="menu-with-icon transition-x">
                 <a
@@ -187,8 +187,8 @@ function Sidebar() {
           {/* {{-- Logout Menu Start --}} */}
           <ul className="sidebar-menus transition-x navbar-nav position-absolute bottom-0 m-0 w-100 mh-0 p-0">
             <li className="sidebar-menus-list-item d-flex align-items-start transition-x nav-item border-0 p-2 px-3 bg-dark mb-0">
-              <span className="sidebar-menus-list-item-img">
-                <img src="{{ Vite::asset('resources/images/logout.svg') }}" alt="users" className="img-fluid" />
+              <span className="sidebar-menus-list-item-Image">
+                <Image src="{{ Vite::asset('resources/images/logout.svg') }}" alt="users" className="Image-fluid" />
               </span>
               <div className="menu-with-icon transition-x">
                 <a
