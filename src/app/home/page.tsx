@@ -1,4 +1,3 @@
-"use client"
 import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -50,7 +49,10 @@ const Dashboard: React.FC = () => {
           <Modal.Title>Disclaimer</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Trading involves risks and may not be suitable for everyone. Past performance is not indicative of future results. Before trading, carefully consider your investment objectives, experience level, and risk tolerance. You could lose some or all of your investment.</p>
+          <p>
+            Trading involves risks and may not be suitable for everyone. Past performance is not indicative of future results. Before trading,
+            carefully consider your investment objectives, experience level, and risk tolerance. You could lose some or all of your investment.
+          </p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => setShowPromptModal(false)}>
@@ -79,7 +81,7 @@ const Dashboard: React.FC = () => {
           <Modal.Title>Available</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>You can see orders after 24 hours once you've placed them.</p>
+          <p>You can see orders after 24 hours once you&apos;ve placed them.</p>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="primary" onClick={() => setShowAllOrdersModal(false)}>
@@ -90,5 +92,5 @@ const Dashboard: React.FC = () => {
     </>
   );
 };
-// EXPORTING THE FUNCTION  
+
 export default Dashboard;

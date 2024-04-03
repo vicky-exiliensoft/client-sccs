@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: "https://node-lbank.onrender.com" ||  process.env.BASE_URL,
+  baseURL: "https://node-lbank.onrender.com" || process.env.BASE_URL,
   headers: { "Content-Type": "application/json" },
 });
 
@@ -19,4 +19,3 @@ axiosInstance.interceptors.request.use(
   }
 );
 export default axiosInstance;
-sd
