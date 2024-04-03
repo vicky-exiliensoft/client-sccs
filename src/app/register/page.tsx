@@ -27,10 +27,10 @@ export default function Home() {
   const router = useRouter();
 
   const [formData, setFormData] = useState<FormData>({
-    name: "John Doe",
-    username: "johndoe123",
-    email: "johndoe@example.com",
-    password: "password123",
+    name: "",
+    username: "",
+    email: "",
+    password: "",
   });
   const [errors, setErrors] = useState<FormErrors>({
     name: "",
