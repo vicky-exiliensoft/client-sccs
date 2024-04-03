@@ -1,17 +1,17 @@
-import React, { useEffect, useRef, memo, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 function TradingViewWidget1Hours() {
-  const container1Minute: any = useRef();
-  const container1Hour: any = useRef();
-  const container4Hours: any = useRef();
-  const container1Day: any = useRef();
-  const [messages, setMessages] = useState([]);
-  const [buySignal, setBuySignal] = useState(false);
+  const container1Minute = useRef<HTMLDivElement>(null);
+  const container1Hour = useRef<HTMLDivElement>(null);
+  const container4Hours = useRef<HTMLDivElement>(null);
+  const container1Day = useRef<HTMLDivElement>(null);
+  const [messages, setMessages] = useState<string[]>([]);
+  const [buySignal, setBuySignal] = useState<boolean>(false);
 
   useEffect(() => {
-    const addTradingViewScript = (containerRef: any, symbol: any, indicator: any) => {
-      if (!containerRef.current.querySelector("script")) {
+    const addTradingViewScript = (containerRef: React.RefObject<HTMLDivElement>, symbol: string, indicator: any) => {
+      if (containerRef.current && !containerRef.current.querySelector("script")) {
         const script = document.createElement("script");
         script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
         script.type = "text/javascript";
@@ -20,7 +20,7 @@ function TradingViewWidget1Hours() {
           {
             "width": "1000",
             "height": "800",
-            "symbol": "BINANCE:BTCUSDT",
+            "symbol": "${symbol}",
             "interval": "1",
             "timezone": "Etc/UTC",
             "theme": "light",
@@ -40,27 +40,22 @@ function TradingViewWidget1Hours() {
       }
     };
 
-    // Simulate MACD line movement and set buy/sell signal
     const simulateMACD = () => {
-      // Simulating MACD line movement
       setInterval(() => {
-        // Simulating MACD line going up or down randomly
         const isUp = Math.random() < 0.5;
         setBuySignal(isUp);
-        // Automatically hide the signal after 20 seconds
         setTimeout(() => {
           setBuySignal(false);
         }, 20000);
-      }, 30000); // Adjust interval time according to your need
+      }, 30000);
     };
 
-    // Add trading view script for each timeframe
     addTradingViewScript(container1Minute, "MEXC:BTCUSDT|1M", {});
     addTradingViewScript(container1Hour, "MEXC:BTCUSDT|1H", {});
     addTradingViewScript(container4Hours, "MEXC:BTCUSDT|4H", {});
     addTradingViewScript(container1Day, "MEXC:BTCUSDT|1D", {});
 
-    simulateMACD(); // Simulate MACD line movement
+    simulateMACD();
   }, []);
 
   return (
@@ -75,7 +70,6 @@ function TradingViewWidget1Hours() {
           </h1>
         </Col>
       </Row>
-      {/* Display buy or sell signal */}
       {buySignal !== null && (
         <Row>
           <Col className="mb-4">
@@ -86,7 +80,6 @@ function TradingViewWidget1Hours() {
           </Col>
         </Row>
       )}
-      {/* Rest of your code */}
       <Row>
         <Col>
           <h5 className="text-start fw-bold d-flex align-items-center gap-1">
@@ -163,4 +156,4 @@ function TradingViewWidget1Hours() {
   );
 }
 
-export default memo(TradingViewWidget1Hours);
+export default TradingViewWidget1Hours;

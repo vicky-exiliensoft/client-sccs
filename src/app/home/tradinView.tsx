@@ -2,11 +2,11 @@ import React, { useEffect, useRef, memo } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 function TradingViewWidget() {
-  const container: any = useRef();
+  const container = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Check if the script has already been appended
-    if (!container && !container.current.querySelector("script")) {
+    if (container.current && !container.current.querySelector("script")) {
       const script = document.createElement("script");
       script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
       script.type = "text/javascript";
@@ -50,19 +50,13 @@ function TradingViewWidget() {
       </Row>
       <Row>
         <Col>
-          {/* <div className="parent"> */}
           <div className="tradingview-widget-container w-100" ref={container}>
             <div className="tradingview-widget-container__widget"></div>
-            {/* </div> */}
           </div>
         </Col>
       </Row>
-      {/* <div className="parent">
-        <div className="tradingview-widget-container" ref={container}>
-          <div className="tradingview-widget-container__widget"></div>
-        </div>
-      </div> */}
     </Container>
   );
 }
+
 export default memo(TradingViewWidget);
