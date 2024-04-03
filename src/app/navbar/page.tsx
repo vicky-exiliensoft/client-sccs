@@ -1,10 +1,10 @@
 "use client";
 
-import Nav from 'react-bootstrap/Nav';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
 
 function NavDropdownExample() {
-  const handleSelect = (eventKey) => alert(`selected ${eventKey}`);
+  const handleSelect = (eventKey: any) => alert(`selected ${eventKey}`);
 
   return (
     <Nav variant="pills" activeKey="1" onSelect={handleSelect}>
@@ -34,4 +34,4 @@ function NavDropdownExample() {
   );
 }
 
-export default NavDropdownExample;s
+export default NavDropdownExample;

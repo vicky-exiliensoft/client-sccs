@@ -4,7 +4,7 @@ export const changPassword = Yup.object().shape({
   currentPassword: Yup.string().required("Current Password is required"),
   newPassword: Yup.string().required("New Password is required").min(6, "New Password must be at least 6 characters"),
   confirmNewPassword: Yup.string()
-    .oneOf([Yup.ref("newPassword"), null], "Passwords must match")
+    .oneOf([Yup.ref("newPassword")], "Passwords must match")
     .required("Confirm New Password is required"),
 });
 // adding new  rules schema's for validation

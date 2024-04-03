@@ -2,15 +2,15 @@ import React, { useEffect, useRef, memo, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 
 function TradingViewWidget1Hours() {
-  const container1Minute = useRef();
-  const container1Hour = useRef();
-  const container4Hours = useRef();
-  const container1Day = useRef();
+  const container1Minute: any = useRef();
+  const container1Hour: any = useRef();
+  const container4Hours: any = useRef();
+  const container1Day: any = useRef();
   const [messages, setMessages] = useState([]);
-  const [buySignal, setBuySignal] = useState(null);
+  const [buySignal, setBuySignal] = useState(false);
 
   useEffect(() => {
-    const addTradingViewScript = (containerRef, symbol, indicator) => {
+    const addTradingViewScript = (containerRef: any, symbol: any, indicator: any) => {
       if (!containerRef.current.querySelector("script")) {
         const script = document.createElement("script");
         script.src = "https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js";
@@ -49,7 +49,7 @@ function TradingViewWidget1Hours() {
         setBuySignal(isUp);
         // Automatically hide the signal after 20 seconds
         setTimeout(() => {
-          setBuySignal(null);
+          setBuySignal(false);
         }, 20000);
       }, 30000); // Adjust interval time according to your need
     };
@@ -80,7 +80,9 @@ function TradingViewWidget1Hours() {
         <Row>
           <Col className="mb-4">
             <div className={`rounded-circle ${buySignal ? "bg-success" : "bg-danger"}`} style={{ width: "77px", height: "80px" }}></div>
-            <strong><span className={buySignal ? "text-success" : "text-danger"}>{buySignal ? "positive" : "negative"}</span></strong>
+            <strong>
+              <span className={buySignal ? "text-success" : "text-danger"}>{buySignal ? "positive" : "negative"}</span>
+            </strong>
           </Col>
         </Row>
       )}

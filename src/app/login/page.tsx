@@ -1,9 +1,9 @@
-"use client"
+"use client";
 import React, { useState, ChangeEvent, FormEvent } from "react";
 import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { useRouter } from "next/navigation"; // Fixed import path
 import { loginApi } from "@/utility/apis";
-import * as Yup from 'yup'; // Import Yup for form validation
+import * as Yup from "yup"; // Import Yup for form validation
 import Link from "next/link";
 import { FaUser, FaLock, FaExclamationTriangle, FaRegUser } from "react-icons/fa"; // Import Font Awesome icons
 import { CiLock, CiMail, CiUser } from "react-icons/ci";
@@ -33,13 +33,14 @@ function Login() {
   const validateForm = async () => {
     try {
       await validationSchema.validate(formData, { abortEarly: false });
-      setErrors({});
+      setErrors({ email: "", password: "" });
       return true;
-    } catch (validationErrors) {
+    } catch (validationErrors: any) {
       const newErrors: { [key: string]: string } = {};
-      validationErrors.inner.forEach(error => {
+      validationErrors.inner.forEach((error: any) => {
         newErrors[error.path as keyof FormData] = error.message;
       });
+      //@ts-ignore
       setErrors(newErrors);
       return false;
     }
@@ -57,7 +58,7 @@ function Login() {
       // console.log("Login successful:", response);
       localStorage.setItem("token", response.token);
       router.push("/home");
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         // console.error("Login error:", error.response.data);
       } else {
@@ -86,9 +87,11 @@ function Login() {
                 */}
                 <Form.Label>Email</Form.Label>
                 <div className="input-group">
-                  <span className="input-group-text"><CiMail /></span>
+                  <span className="input-group-text">
+                    <CiMail />
+                  </span>
                   <Form.Control
-                    className={`${errors.email ? 'is-invalid' : ''}`}
+                    className={`${errors.email ? "is-invalid" : ""}`}
                     id="email"
                     type="email"
                     placeholder="Email"
@@ -96,14 +99,20 @@ function Login() {
                     value={formData.email}
                   />
                 </div>
-                {errors.email && <Form.Control.Feedback type="invalid"><FaExclamationTriangle /> {errors.email}</Form.Control.Feedback>}
+                {errors.email && (
+                  <Form.Control.Feedback type="invalid">
+                    <FaExclamationTriangle /> {errors.email}
+                  </Form.Control.Feedback>
+                )}
               </Form.Group>
               <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <div className="input-group">
-                  <span className="input-group-text"><CiLock  /></span>
+                  <span className="input-group-text">
+                    <CiLock />
+                  </span>
                   <Form.Control
-                    className={`${errors.password ? 'is-invalid' : ''}`}
+                    className={`${errors.password ? "is-invalid" : ""}`}
                     id="password"
                     type="password"
                     placeholder="Password"
@@ -111,19 +120,18 @@ function Login() {
                     value={formData.password}
                   />
                 </div>
-                {errors.password && <Form.Control.Feedback type="invalid"><FaExclamationTriangle /> {errors.password}</Form.Control.Feedback>}
+                {errors.password && (
+                  <Form.Control.Feedback type="invalid">
+                    <FaExclamationTriangle /> {errors.password}
+                  </Form.Control.Feedback>
+                )}
               </Form.Group>
-              <Button
-                className="py-2 px-4 rounded focus:outline-none focus:shadow-outline w-75 d-block mx-auto mt-5"
-                type="submit"
-              >
+              <Button className="py-2 px-4 rounded focus:outline-none focus:shadow-outline w-75 d-block mx-auto mt-5" type="submit">
                 Login
               </Button>
               <div className="d-flex justify-content-center mb-1 gap-1 align-items-center text-white">
-                Forget password? 
-                <Link href={"/forget"}>
-                  Click Here
-                </Link>
+                Forget password?
+                <Link href={"/forget"}>Click Here</Link>
               </div>
               <Link href={"/register"} className="text-decoration-underline d-block text-center">
                 Create an Account

@@ -61,6 +61,7 @@ export default function Home() {
       router.push("/login");
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
+        //@ts-ignore
         const newErrors: FormErrors = {};
         error.inner.forEach(err => {
           newErrors[err.path as keyof FormErrors] = err.message;
@@ -83,7 +84,9 @@ export default function Home() {
               <Form.Group className="col-mb-12">
                 <Form.Label>Name</Form.Label>
                 <div className="input-group">
-                  <span className="input-group-text"><CiUser  /></span>
+                  <span className="input-group-text">
+                    <CiUser />
+                  </span>
                   {/* Icon for name */}
                   <Form.Control
                     type="text"
@@ -99,7 +102,9 @@ export default function Home() {
               <Form.Group className="mb-4">
                 <Form.Label>Username</Form.Label>
                 <div className="input-group">
-                  <span className="input-group-text"><CiUser  /></span>
+                  <span className="input-group-text">
+                    <CiUser />
+                  </span>
                   {/* Icon for username */}
                   <Form.Control
                     type="text"
@@ -115,7 +120,9 @@ export default function Home() {
               <Form.Group className="mb-4">
                 <Form.Label>Email</Form.Label>
                 <div className="input-group">
-                  <span className="input-group-text"><CiMail /></span>
+                  <span className="input-group-text">
+                    <CiMail />
+                  </span>
                   {/* Icon for email */}
                   <Form.Control
                     type="email"
@@ -131,7 +138,9 @@ export default function Home() {
               <Form.Group className="mb-4">
                 <Form.Label>Password</Form.Label>
                 <div className="input-group">
-                  <span className="input-group-text"><CiLock  /></span>
+                  <span className="input-group-text">
+                    <CiLock />
+                  </span>
                   {/* Icon for password */}
                   <Form.Control
                     type="password"
@@ -144,10 +153,7 @@ export default function Home() {
                 </div>
                 <Form.Control.Feedback type="invalid">{errors.password}</Form.Control.Feedback>
               </Form.Group>
-              <Button
-                type="submit"
-                className="py-2 px-4 rounded focus:outline-none focus:shadow-outline w-75 d-block mx-auto mt-5"
-              >
+              <Button type="submit" className="py-2 px-4 rounded focus:outline-none focus:shadow-outline w-75 d-block mx-auto mt-5">
                 Register
               </Button>
               <div className="d-flex justify-content-center mb-1 gap-1 align-items-center text-white">

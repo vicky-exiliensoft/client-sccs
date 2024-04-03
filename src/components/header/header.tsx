@@ -9,7 +9,7 @@ export default function Header() {
   const router = useRouter();
 
   const [showProfileModal, setShowProfileModal] = useState(false);
-  const [profileData, setProfileData] = useState(null);
+  const [profileData, setProfileData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -19,7 +19,6 @@ export default function Header() {
         setProfileData(response.data);
         setLoading(false);
       } catch (error) {
-       
         setLoading(false);
       }
     };
@@ -42,7 +41,7 @@ export default function Header() {
       router.push("/login");
     }
   };
- 
+
   const [totalBalance, setTotalBalance] = useState<number>(0);
   useEffect(() => {
     const interval = setInterval(() => {
@@ -51,7 +50,7 @@ export default function Header() {
     }, 2000);
 
     return () => clearInterval(interval);
-  }, []); 
+  }, []);
 
   return (
     <>
@@ -61,13 +60,11 @@ export default function Header() {
             <Image src="/logo.svg" alt="logo" width={120} height={120} />
           </Navbar.Brand>
           <Nav className="ms-auto align-items-center">
-            <div className="d-flex justify-content-center" style={{ marginRight: '731px' }}>
-             
+            <div className="d-flex justify-content-center" style={{ marginRight: "731px" }}>
               <h4 className="m-0 text-primary">
                 <span className="text-secondary">$</span>0.00
               </h4>
               {/* {totalBalance.toFixed(2)} */}
-              
             </div>
             <Nav.Link href="/connect">
               <FaExchangeAlt className="text-secondary" />
@@ -96,42 +93,58 @@ export default function Header() {
               <div>
                 <div className="row">
                   <div className="col">
-                    <p><strong>Name:</strong> {profileData?.user.name}</p>
+                    <p>
+                      <strong>Name:</strong> {profileData?.user.name}
+                    </p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <p><strong>Email:</strong> {profileData?.user.email}</p>
+                    <p>
+                      <strong>Email:</strong> {profileData?.user.email}
+                    </p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <p><strong>Role:</strong> {profileData?.user.role}</p>
+                    <p>
+                      <strong>Role:</strong> {profileData?.user.role}
+                    </p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <p><strong>Permissions:</strong> {profileData?.user.permissions}</p>
+                    <p>
+                      <strong>Permissions:</strong> {profileData?.user.permissions}
+                    </p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <p><strong>Last Login Time:</strong> {profileData?.user.lastLoginTime}</p>
+                    <p>
+                      <strong>Last Login Time:</strong> {profileData?.user.lastLoginTime}
+                    </p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <p><strong>Role:</strong> {profileData?.user.creationDate}</p>
+                    <p>
+                      <strong>Role:</strong> {profileData?.user.creationDate}
+                    </p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <p><strong>Registration Time:</strong> {profileData?.user.registrationTime}</p>
+                    <p>
+                      <strong>Registration Time:</strong> {profileData?.user.registrationTime}
+                    </p>
                   </div>
                 </div>
                 <div className="row">
                   <div className="col">
-                    <p><strong>Location:</strong> {profileData?.user.location}</p>
+                    <p>
+                      <strong>Location:</strong> {profileData?.user.location}
+                    </p>
                   </div>
                 </div>
               </div>
